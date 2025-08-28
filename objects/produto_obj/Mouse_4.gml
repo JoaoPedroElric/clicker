@@ -1,9 +1,8 @@
 with(cliker_obj) {
-	if(reciclagem >= other.valor) {
-		reciclagem -= other.valor;
-		click += 1;
-		other.valor *= 1.2;
+	if(global.reciclagem >= other.valor) {
+		global.reciclagem -= other.valor;
+		other.valor *= 1.15;
 		other.quantidade ++;
-		cps += other.rps;
+		global.cps += other.rps;
 	}
 }

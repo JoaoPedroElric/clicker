@@ -8,7 +8,9 @@ inst.vel_y = random_range(-3,-4);
 draw_set_valign(1);
 draw_set_halign(1);
 
-draw_text(x, y - 60, reciclagem);
+draw_text(x, y - 90, global.reciclagem);
+draw_text(x, y - 60, global.cps );
+
 draw_set_font(-1);
 
 randomize();

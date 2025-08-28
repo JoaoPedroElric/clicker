@@ -1,7 +1,7 @@
 {
   "$GMFont":"",
   "%Name":"fonte",
-  "AntiAlias":1,
+  "AntiAlias":0,
   "applyKerning":0,
   "ascender":13,
   "ascenderOffset":0,
@@ -107,7 +107,7 @@
     "124":{"character":124,"h":17,"offset":0,"shift":3,"w":2,"x":13,"y":21,},
     "125":{"character":125,"h":17,"offset":0,"shift":6,"w":5,"x":6,"y":21,},
     "126":{"character":126,"h":17,"offset":0,"shift":11,"w":10,"x":183,"y":59,},
-    "9647":{"character":9647,"h":17,"offset":3,"shift":16,"w":10,"x":195,"y":59,},
+    "9647":{"character":9647,"h":17,"offset":3,"shift":16,"w":9,"x":195,"y":59,},
   },
   "hinting":0,
   "includeTTF":false,
@@ -134,10 +134,7 @@
   "sdfSpread":8,
   "size":12.0,
   "styleName":"Medium",
-  "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
-  },
+  "textureGroupId":null,
   "TTFName":"",
   "usesSDF":false,
 }
