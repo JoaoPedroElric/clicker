@@ -1,6 +1,6 @@
 global.reciclagem = 0;
-total_produtos = 6;
-total_upgrades = 6; // quantidade de upgrades
+total_produtos = 3;
+total_upgrades = 3; // quantidade de upgrades
 
 reciclagem_total = global.reciclagem;
 global.click = 1;
@@ -174,7 +174,7 @@ function iniciar_upgrades() {
 			with (upgrades[i]) {
 				valor    = lista[i][0];
 				comprado = lista[i][1];
-				efeito   = lista[i][2];
+				info   = lista[i][2];
 			}
 		}
 	}
@@ -184,7 +184,7 @@ function gerencia_upgrades() {
 	
 	for (var i = 0; i < array_length(upgrades); i++) {
 		var _marg = 5;
-		var _x = 471 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
+		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
 		var _y = base_y_up;
 		
 		with (upgrades[i]) {
