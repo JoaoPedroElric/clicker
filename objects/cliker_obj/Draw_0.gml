@@ -9,7 +9,7 @@ draw_set_valign(1);
 draw_set_halign(1);
 
 draw_text(x, y - 90, global.reciclagem);
-draw_text(x, y - 60, global.cps );
+draw_text(x, y - 60, string_format(global.cps,1 , 2 ));
 
 draw_set_font(-1);
 

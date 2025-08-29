@@ -31,17 +31,19 @@ function cria_produtos(_qtd = 1) {
 
 function iniciar_produtos() {
 	var lista = [
-		[10, 0, 0.1],
-		[100, 0, 1],
-		[1000, 0, 8]
+		[10, 0, 0.1, "Gera 0.10 rps", 0],
+		[100, 0, 1, "Gera 1 rps", 0],
+		[1000, 0, 8, "Gera 8 rps", 0]
 	];
 	
 	for(var i = 0; i < array_length(lista); i ++) {
 		if(i < array_length(produtos)) {
 			with(produtos[i]) {
-				valor = lista[i][0];
-				quantidade = lista[i][1];
-				rps = lista[i][2];
+				valor		= lista[i][0];
+				quantidade  = lista[i][1];
+				rps			= lista[i][2];
+				descricao	= lista[i][3];
+				rps_t		= lista[i][4]; 
 			}
 		}
 	}
@@ -68,7 +70,10 @@ function save_game() {
 			array_push(_struct.produtos, {
 				valor		: valor,
 				quantidade  : quantidade,
-				rps			: rps
+				rps			: rps,
+				descricao	: descricao,
+				rps_t		: rps_t
+				
 			});
 		}
 	}
@@ -103,6 +108,8 @@ function load_game() {
 			valor	   = _struct.produtos[_i].valor;
 			quantidade = _struct.produtos[_i].quantidade;
 			rps		   = _struct.produtos[_i].rps;
+			descricao  = _struct.produtos[_i].descricao;
+			rps_t	   = _struct.produtos[_i].rps_t;
 		}
 	}
 	
@@ -164,9 +171,9 @@ function cria_upgrades(_qtd = 1) {
 
 function iniciar_upgrades() {
 	var lista = [
-		[100, false, "Aumenta a eficiencia do clique em x2"],
-		[500, false, "Multiplica a eficiencia dos funcionarios em x2"],
-		[2000, false, "Dobra o cps"]
+		[100, false, "Aumenta a eficiencia do clique em x2", 2 , 0],
+		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1],
+		[2000, false, "Dobra o cps", 2, 2]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {
@@ -174,7 +181,9 @@ function iniciar_upgrades() {
 			with (upgrades[i]) {
 				valor    = lista[i][0];
 				comprado = lista[i][1];
-				info   = lista[i][2];
+				info     = lista[i][2];
+				mult	 = lista[i][3];
+				index	 = lista[i][4] 
 			}
 		}
 	}
