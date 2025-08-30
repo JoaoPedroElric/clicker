@@ -1,6 +1,8 @@
 global.reciclagem = 0;
-total_produtos = 3;
+total_produtos = 8;
 total_upgrades = 3; // quantidade de upgrades
+
+
 
 reciclagem_total = global.reciclagem;
 global.click = 1;
@@ -55,13 +57,17 @@ function save_game() {
 	global.save = true;
 	var _file = file_text_open_write("save.json");
 	
+	var _tempo_atual = date_current_datetime();
+
+	
 	// saber oq salvar
 	var _struct = 
 	{
 		reciclagem  : global.reciclagem,
 		click		: global.click,
 		cps			: global.cps,
-		produtos    : []
+		produtos    : [],
+		tempo       : _tempo_atual
 	};
 	//show_message(_struct);
 	
@@ -94,9 +100,17 @@ function load_game() {
 		return;	
 	}
 	
+	
+	
+	
 	var _file = file_text_open_read("save.json");
 	var _string = file_text_read_string(_file);
 	var _struct = json_parse(_string);
+	
+	var _tempo = date_current_datetime();
+	var _dif = date_second_span(_struct.tempo, _tempo);
+	
+	
 	
 	// atribuindo valores
 	global.reciclagem = _struct.reciclagem;
@@ -113,6 +127,9 @@ function load_game() {
 		}
 	}
 	
+	global.reciclagem += _dif * global.cps;
+	var teste = (_dif / 5) * global.cps;
+	
 	file_text_close(_file);
 }
 
@@ -121,6 +138,10 @@ function deletar_save() {
 		file_delete("save.json");
 	}
 }
+
+
+	
+
 
 function rolagem() {
 	//scroll os produtos 
@@ -171,19 +192,21 @@ function cria_upgrades(_qtd = 1) {
 
 function iniciar_upgrades() {
 	var lista = [
-		[100, false, "Aumenta a eficiencia do clique em x2", 2 , 0],
-		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1],
-		[2000, false, "Dobra o cps", 2, 2]
+		[100, false, "Aumenta a eficiencia do clique em x2", 2 , 0, false, 1],
+		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, 1],
+		[2000, false, "Dobra o cps", 2, 2, false, 1]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {
 		if (i < array_length(upgrades)) {
 			with (upgrades[i]) {
-				valor    = lista[i][0];
-				comprado = lista[i][1];
-				info     = lista[i][2];
-				mult	 = lista[i][3];
-				index	 = lista[i][4] 
+				valor		= lista[i][0];
+				comprado	= lista[i][1];
+				info		= lista[i][2];
+				mult		= lista[i][3];
+				index		= lista[i][4];
+				exibir		= lista[i][5];
+				disponivel	= lista[i][6];
 			}
 		}
 	}
@@ -192,19 +215,21 @@ function iniciar_upgrades() {
 function gerencia_upgrades() {
 	
 	for (var i = 0; i < array_length(upgrades); i++) {
-		var _marg = 5;
-		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
-		var _y = base_y_up;
+		if(upgrades[0].disponivel >= produtos[0].quantidade) {
+			var _marg = 5;
+			var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
+			var _y = base_y_up;
 		
-		with (upgrades[i]) {
-			x = _x;
-			y = _y + sprite_height / 2;
+			with (upgrades[i]) {
+				x = _x;
+				y = _y + sprite_height / 2;
+			}
 		}
 	}
 }
 
 
-//deletar_save();
+deletar_save();
 cria_produtos(total_produtos);
 cria_upgrades(total_upgrades);
 iniciar_upgrades();

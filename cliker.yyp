@@ -51,7 +51,6 @@
     {"id":{"name":"info_spr","path":"sprites/info_spr/info_spr.yy",},},
     {"id":{"name":"produto_spr","path":"sprites/produto_spr/produto_spr.yy",},},
     {"id":{"name":"quantidade_spr","path":"sprites/quantidade_spr/quantidade_spr.yy",},},
-    {"id":{"name":"save_spr","path":"sprites/save_spr/save_spr.yy",},},
     {"id":{"name":"upgrad_spr","path":"sprites/upgrad_spr/upgrad_spr.yy",},},
   ],
   "resourceType":"GMProject",
