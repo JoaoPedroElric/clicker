@@ -4,6 +4,7 @@ with(cliker_obj) {
 		other.valor *= 1.15;
 		other.quantidade ++;
 		global.cps += other.rps;
-
+		
+		
 	}
 }

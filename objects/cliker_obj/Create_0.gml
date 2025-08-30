@@ -1,5 +1,5 @@
 global.reciclagem = 0;
-total_produtos = 8;
+total_produtos = 6; // qauntidade de produtos
 total_upgrades = 3; // quantidade de upgrades
 
 
@@ -8,13 +8,12 @@ reciclagem_total = global.reciclagem;
 global.click = 1;
 global.cps = 0;
 
+// save automatico
 global.save = false;
-
 alarm[1] = room_speed * 60;
 
 escala_x = image_xscale;
 escala_y = image_yscale;
-
 
 alarm[0] = room_speed * 3;
 
@@ -35,7 +34,10 @@ function iniciar_produtos() {
 	var lista = [
 		[10, 0, 0.1, "Gera 0.10 rps", 0],
 		[100, 0, 1, "Gera 1 rps", 0],
-		[1000, 0, 8, "Gera 8 rps", 0]
+		[1100, 0, 12, "Gera 12 rps", 0],
+		[12000, 0, 55, "Gera 50 rps", 0],
+		[150000, 0, 290, "Gera 290 rps", 0],
+		[1400000, 0, 1500, "Gera 1500 rps", 0]
 	];
 	
 	for(var i = 0; i < array_length(lista); i ++) {
@@ -78,7 +80,9 @@ function save_game() {
 				quantidade  : quantidade,
 				rps			: rps,
 				descricao	: descricao,
-				rps_t		: rps_t
+				rps_t		: rps_t,
+				r_total     : r_total,
+				index       : index
 				
 			});
 		}
@@ -124,6 +128,8 @@ function load_game() {
 			rps		   = _struct.produtos[_i].rps;
 			descricao  = _struct.produtos[_i].descricao;
 			rps_t	   = _struct.produtos[_i].rps_t;
+			r_total	   = _struct.produtos[_i].r_total;
+			index	   = _struct.produtos[_i].index;
 		}
 	}
 	
@@ -192,21 +198,23 @@ function cria_upgrades(_qtd = 1) {
 
 function iniciar_upgrades() {
 	var lista = [
-		[100, false, "Aumenta a eficiencia do clique em x2", 2 , 0, false, 1],
-		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, 1],
-		[2000, false, "Dobra o cps", 2, 2, false, 1]
+		[100, false, "Aumenta a eficiencia da pa em x2", 2 , 0, false, 1, 0, 1],
+		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, 1, 1, 1],
+		[2000, false, "Dobra o cps", 2, 2, false, 1, 2, 1]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {
 		if (i < array_length(upgrades)) {
 			with (upgrades[i]) {
-				valor		= lista[i][0];
-				comprado	= lista[i][1];
-				info		= lista[i][2];
-				mult		= lista[i][3];
-				index		= lista[i][4];
-				exibir		= lista[i][5];
-				disponivel	= lista[i][6];
+				valor			= lista[i][0];
+				comprado		= lista[i][1];
+				info			= lista[i][2];
+				mult			= lista[i][3];
+				index			= lista[i][4];
+				exibir			= lista[i][5];
+				disponivel		= lista[i][6];
+				pdt_alvo		= lista[i][7];
+				qtd_necessaria	= lista[i][8];
 			}
 		}
 	}
@@ -215,21 +223,23 @@ function iniciar_upgrades() {
 function gerencia_upgrades() {
 	
 	for (var i = 0; i < array_length(upgrades); i++) {
-		if(upgrades[0].disponivel >= produtos[0].quantidade) {
-			var _marg = 5;
-			var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
-			var _y = base_y_up;
+
+		var _marg = 5;
+		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
+		var _y = base_y_up;
 		
-			with (upgrades[i]) {
-				x = _x;
-				y = _y + sprite_height / 2;
-			}
+		with (upgrades[i]) {
+			x = _x;
+			y = _y + sprite_height / 2;
 		}
 	}
+	
 }
 
 
 deletar_save();
+
+
 cria_produtos(total_produtos);
 cria_upgrades(total_upgrades);
 iniciar_upgrades();

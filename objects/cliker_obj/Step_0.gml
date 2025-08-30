@@ -11,3 +11,5 @@ if(keyboard_check(ord("S"))) {
 	save_game();	
 }
 
+
+
