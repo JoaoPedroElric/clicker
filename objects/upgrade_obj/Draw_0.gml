@@ -16,6 +16,7 @@ if (clicker != noone) {
             var _y = 0;
             draw_sprite_stretched(info_spr, 0, _x, _y, 160, 64);
             draw_text_ext_transformed(bloco.x - 150, bloco.y - sprite_height / 2, info, 20, bloco.sprite_width , 0.7, 0.7, 0);
+			draw_text_ext_transformed(bloco.x - 30, bloco.y - sprite_height / 2, valor, 20, bloco.sprite_width, 0.6, 0.6 ,0);
         }
 
         draw_set_color(-1);

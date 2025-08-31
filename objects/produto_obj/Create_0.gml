@@ -1,3 +1,4 @@
+depth = 0;
 exibir = false;
 
 
@@ -8,7 +9,7 @@ function desenhando_produto() {
 	draw_set_valign(1);
 	draw_set_halign(1);
 
-	if(exibir){
+	if(exibir && mouse_y > 64){
 		draw_set_color(c_black);
 		draw_sprite_stretched(info_spr, 0, 480-160, mouse_y - 20, 160, 64);
 		draw_text_ext_transformed(produto_obj.x - 120, mouse_y -10, descricao, 20, sprite_width, 0.6, 0.6, 0);

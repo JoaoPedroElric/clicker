@@ -1,6 +1,6 @@
 global.reciclagem = 0;
 total_produtos = 6; // qauntidade de produtos
-total_upgrades = 3; // quantidade de upgrades
+total_upgrades = 8; // quantidade de upgrades
 
 
 
@@ -163,10 +163,27 @@ function rolagem() {
 	produtos_y = clamp(produtos_y, -_max, base_y);
 }
 
+function rolagem_u() {
+	
+    // Rolagem do mouse
+    if (mouse_check_button(mouse_wheel_down())) {
+        upgrades_y += 20;  
+    }
+    if (mouse_check_button(mouse_wheel_up())) {
+        upgrades_y -= 20;
+    }
+
+  
+	var _max = (32 * total_upgrades) + (20 * total_upgrades) + 20 - room_height;
+	
+	upgrades_y = clamp(upgrades_y, -_max, base_y_up);
+}
+
 // fazendo eles aparecer na tela
 function gerencia_produtos() {
-	
-	rolagem();
+	if(mouse_x > 480 && mouse_y > 64) {
+		rolagem();
+	}
 	
 	for(var i = 0; i < array_length(produtos); i++) {
 		var _marg = 10;
@@ -186,6 +203,8 @@ function gerencia_produtos() {
 
 
 upgrades = [];
+
+clone_upgrade = [];
 
 base_y_up = 20; // posição inicial (pode mudar)
 upgrades_y = 0 + base_y_up;
@@ -221,11 +240,14 @@ function iniciar_upgrades() {
 }
 
 function gerencia_upgrades() {
+	if(mouse_x > 480 && mouse_y <= 64) {
+		rolagem_u();
+	}
 	
 	for (var i = 0; i < array_length(upgrades); i++) {
 
 		var _marg = 5;
-		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); // lado direito da tela
+		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); 
 		var _y = base_y_up;
 		
 		with (upgrades[i]) {

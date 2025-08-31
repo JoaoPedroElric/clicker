@@ -13,7 +13,7 @@ with(cliker_obj) {
 		p.rps_t = p.rps;
 		p.descricao = "Gera " + string(p.rps_t) + " rps";
 		global.cps = 0;
-		// calculando o rps total e atribuindo no cps
+		//calculando o rps total e atribuindo no cps
 		for (var i = 0; i < array_length(produtos); i++) {
 		    global.cps += (produtos[i].rps_t * produtos[i].quantidade);
 		}
