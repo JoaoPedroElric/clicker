@@ -1,6 +1,5 @@
 
 
-
 if(global.reciclagem > valor / 5 or quantidade >= 1 or r_total ) {
 	desenhando_produto();
 	

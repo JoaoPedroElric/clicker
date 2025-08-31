@@ -1,6 +1,6 @@
 global.reciclagem = 0;
 total_produtos = 6; // qauntidade de produtos
-total_upgrades = 8; // quantidade de upgrades
+total_upgrades = 3; // quantidade de upgrades
 
 
 
@@ -38,7 +38,7 @@ function iniciar_produtos() {
 		[12000, 0, 55, "Gera 50 rps", 0],
 		[150000, 0, 290, "Gera 290 rps", 0],
 		[1400000, 0, 1500, "Gera 1500 rps", 0]
-	];
+	];   
 	
 	for(var i = 0; i < array_length(lista); i ++) {
 		if(i < array_length(produtos)) {
@@ -199,6 +199,7 @@ function gerencia_produtos() {
 	}
 }
 
+
 //===================================================================================
 
 
@@ -217,9 +218,9 @@ function cria_upgrades(_qtd = 1) {
 
 function iniciar_upgrades() {
 	var lista = [
-		[100, false, "Aumenta a eficiencia da pa em x2", 2 , 0, false, 1, 0, 1],
+		[100, false, "Multiplica a eficiencia da pa em x2", 2 , 0, false, 1, 0, 1],
 		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, 1, 1, 1],
-		[2000, false, "Dobra o cps", 2, 2, false, 1, 2, 1]
+		[2000, false, "Multiplica a eficiencia dos caminhoes em x2", 2, 2, false, 1, 2, 1]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {

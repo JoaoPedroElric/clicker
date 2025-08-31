@@ -18,7 +18,7 @@ function desenhando_produto() {
 
 	draw_sprite(quantidade_spr, 1, x + 110, y);
 	draw_text(x + 110, y, quantidade);
-	draw_text(x + 45, y, valor);
+	draw_text(x + 45, y, converter(valor));
 
 	draw_set_valign(-1);
 	draw_set_halign(-1);
