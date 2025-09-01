@@ -1,6 +1,6 @@
 global.reciclagem = 0;
 total_produtos = 6; // qauntidade de produtos
-total_upgrades = 3; // quantidade de upgrades
+total_upgrades = 7; // quantidade de upgrades
 
 
 
@@ -92,14 +92,14 @@ function save_game() {
 	for(var _i = 0; _i < array_length(upgrades); _i++) {
 		with(upgrades[_i]) {
 			array_push(_struct.upgrades, {
-				//valor			: valor,
-				comprado		: comprado,
-				//info			: info,
-				//mult			: mult,
-				//index			: index,
+				//valor				: valor,
+				comprado			: comprado,
+				//info				: info,
+				//mult				: mult,
+				//index				: index,
 				//exibir			: exibir,
 				//disponivel		: disponivel,
-				//pdt_alvo		: pdt_alvo,
+				//pdt_alvo			: pdt_alvo,
 				//qtd_necessaria	: qtd_necessaria	
 				
 			});
@@ -134,7 +134,7 @@ function load_game() {
 	
 	
 	
-	// atribuindo valores
+	//atribuindo valores
 	global.reciclagem = _struct.reciclagem;
 	global.click	  = _struct.click;
 	global.cps		  = _struct.cps;
@@ -157,7 +157,7 @@ function load_game() {
 	for (var i = 0; i < array_length(upgrades); i++) {
 	    with (upgrades[i]) {
 	       	//valor			= _struct.upgrades[i].valor;			
-			comprado		= _struct.upgrades[i].comprado;
+			comprado		= _struct.upgrades[i].comprado; 
 			//info			= lista[i][2];
 			//mult			= lista[i][3];
 			//index			= lista[i][4];
@@ -213,7 +213,7 @@ function rolagem_u() {
     }
 
   
-	var _max = (32 * total_upgrades) + (20 * total_upgrades) + 20 - room_height;
+	var _max = (32 * total_upgrades) + (32 * total_upgrades) + 20 - room_height;
 	
 	upgrades_y = clamp(upgrades_y, -_max, base_y_up);
 }
@@ -259,7 +259,11 @@ function iniciar_upgrades() {
 	var lista = [
 		[100, false, "Multiplica a eficiencia da pa em x2", 2 , 0, false, false, 0, 1],
 		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, false, 1, 1],
-		[2000, false, "Multiplica a eficiencia dos caminhoes em x2", 2, 2, false, false, 2, 1]
+		[1000, false, "Multiplica a eficiencia dos caminhoes em x2", 2, 2, false, false, 2, 1],
+		[1500, false, "Multiplica a eficiencia em x2", 2, 3, false, false, 3, 1],
+		[2500, false, "Multiplica a eficiencia em x2", 2, 4, false, false, 4, 1],
+		[5500, false, "Multiplica a eficiencia em x2", 2, 5, false, false, 5, 1],
+		[1000, false, "Multiplica a eficiencia da pe em x2", 2, 0, false, false, 0, 10]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {
@@ -292,7 +296,7 @@ function gerencia_upgrades() {
 		var _y = base_y_up;
 		
 		with (upgrades[i]) {
-			if(!comprado) {
+			if(!comprado && disponivel) {
 				x = _x;
 				y = _y + sprite_height / 2;
 				pos++;
@@ -304,7 +308,7 @@ function gerencia_upgrades() {
 }
 
 
-//deletar_save();
+deletar_save();
 
 
 cria_produtos(total_produtos);
