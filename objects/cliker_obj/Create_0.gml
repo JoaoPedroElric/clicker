@@ -92,7 +92,16 @@ function save_game() {
 	for(var _i = 0; _i < array_length(upgrades); _i++) {
 		with(upgrades[_i]) {
 			array_push(_struct.upgrades, {
-				comprado	: comprado,				
+				//valor			: valor,
+				comprado		: comprado,
+				//info			: info,
+				//mult			: mult,
+				//index			: index,
+				//exibir			: exibir,
+				//disponivel		: disponivel,
+				//pdt_alvo		: pdt_alvo,
+				//qtd_necessaria	: qtd_necessaria	
+				
 			});
 		}
 	}
@@ -143,6 +152,21 @@ function load_game() {
 	}
 	
 	
+
+	// percorre upgrades existentes
+	for (var i = 0; i < array_length(upgrades); i++) {
+	    with (upgrades[i]) {
+	       	//valor			= _struct.upgrades[i].valor;			
+			comprado		= _struct.upgrades[i].comprado;
+			//info			= lista[i][2];
+			//mult			= lista[i][3];
+			//index			= lista[i][4];
+			//exibir			= lista[i][5];
+			//disponivel		= lista[i][6];
+			//pdt_alvo		= lista[i][7];
+			//qtd_necessaria	= lista[i][8];
+	    }
+	}
 	
 
 	// aplica os dados salvos
@@ -256,22 +280,24 @@ function iniciar_upgrades() {
 }
 
 function gerencia_upgrades() {
+	
+	var pos = 0;
 	if(mouse_x > 480 && mouse_y <= 64) {
 		rolagem_u();
 	}
 	
 	for (var i = 0; i < array_length(upgrades); i++) {
-
 		var _marg = 5;
-		var _x = 480 + upgrades_y + _marg + ((i * 32) + (i * _marg)); 
+		var _x = 480 + upgrades_y + _marg + ((pos * 32) + (pos * _marg)); 
 		var _y = base_y_up;
 		
 		with (upgrades[i]) {
 			if(!comprado) {
 				x = _x;
 				y = _y + sprite_height / 2;
+				pos++;
 			} else {
-				x = - 1000;
+				x = -1000;
 			}
 		}
 	}	
