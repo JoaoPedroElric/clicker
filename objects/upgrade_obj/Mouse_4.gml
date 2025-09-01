@@ -1,10 +1,10 @@
 //atribuindo upgrade
 with(cliker_obj) {
-	if(global.reciclagem >= other.valor) {
+	if(global.reciclagem >= other.valor && other.disponivel) {
 		global.reciclagem -= other.valor;
 		global.click ++;
 		other.comprado = true;
-	
+		
 		show_debug_message(other.index);	
 		
 		// pegando o index

@@ -218,9 +218,9 @@ function cria_upgrades(_qtd = 1) {
 
 function iniciar_upgrades() {
 	var lista = [
-		[100, false, "Multiplica a eficiencia da pa em x2", 2 , 0, false, 1, 0, 1],
-		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, 1, 1, 1],
-		[2000, false, "Multiplica a eficiencia dos caminhoes em x2", 2, 2, false, 1, 2, 1]
+		[100, false, "Multiplica a eficiencia da pa em x2", 2 , 0, false, false, 0, 1],
+		[500, false, "Multiplica a eficiencia dos funcionarios em x2", 2, 1, false, false, 1, 1],
+		[2000, false, "Multiplica a eficiencia dos caminhoes em x2", 2, 2, false, false, 2, 1]
 	];
 	
 	for (var i = 0; i < array_length(lista); i++) {

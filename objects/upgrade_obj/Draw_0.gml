@@ -12,7 +12,8 @@ if (clicker != noone) {
     var p = clicker.produtos[pdt_alvo];
 
     if (p.quantidade >= qtd_necessaria) {
-		disponivel = 1;
+		disponivel = true;
+		
         //habilitado
         draw_self();
         draw_set_font(fonte);
