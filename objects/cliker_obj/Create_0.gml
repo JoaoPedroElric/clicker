@@ -69,6 +69,7 @@ function save_game() {
 		click		: global.click,
 		cps			: global.cps,
 		produtos    : [],
+		upgrades	: [],
 		tempo       : _tempo_atual
 	};
 	//show_message(_struct);
@@ -84,6 +85,14 @@ function save_game() {
 				r_total     : r_total,
 				index       : index
 				
+			});
+		}
+	}
+	
+	for(var _i = 0; _i < array_length(upgrades); _i++) {
+		with(upgrades[_i]) {
+			array_push(_struct.upgrades, {
+				comprado	: comprado,				
 			});
 		}
 	}
@@ -132,6 +141,12 @@ function load_game() {
 			index	   = _struct.produtos[_i].index;
 		}
 	}
+	
+	
+	
+
+	// aplica os dados salvos
+
 	
 	global.reciclagem += _dif * global.cps;
 	var teste = (_dif / 5) * global.cps;
@@ -212,7 +227,7 @@ upgrades_y = 0 + base_y_up;
 
 function cria_upgrades(_qtd = 1) {
 	for (var i = 0; i < _qtd; i++) {
-		upgrades[i] = instance_create_layer(0, 0, layer, upgrade_obj);
+		upgrades[i] = instance_create_layer(0, 0, layer, upgrade_obj);	
 	}
 }
 
@@ -252,15 +267,18 @@ function gerencia_upgrades() {
 		var _y = base_y_up;
 		
 		with (upgrades[i]) {
-			x = _x;
-			y = _y + sprite_height / 2;
+			if(!comprado) {
+				x = _x;
+				y = _y + sprite_height / 2;
+			} else {
+				x = - 1000;
+			}
 		}
-	}
-	
+	}	
 }
 
 
-deletar_save();
+//deletar_save();
 
 
 cria_produtos(total_produtos);

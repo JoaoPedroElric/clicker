@@ -12,7 +12,7 @@ function converter(v_cheio = 0) {
         v /= 1000000; 
         notacao = "M"; 
     } else if (v >= 10000) { 
-        v /= 10000; 
+        v /= 1000; 
         notacao = "K"; 
     } else { 
         return string(v); 
